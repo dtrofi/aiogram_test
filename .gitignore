@@ -1,0 +1,8 @@
+﻿#python stuff
+venv/
+.pylintrc
+__pycashe__/
+
+#ide stuff
+.vscode
+.idea
