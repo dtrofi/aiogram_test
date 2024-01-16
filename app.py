@@ -6,6 +6,8 @@
 
 # Документация
 # https://docs.aiogram.dev/en/latest/
+# https://core.telegram.org/
+# https://core.telegram.org/api
 
 import asyncio
 from aiogram import Bot, Dispatcher, types
@@ -28,10 +30,14 @@ async def echo(message: types.Message):
     elif text in ["Пока", "пока", "пакеда", "До свидания"]:
         await message.answer("Ну и хрен с тобой!")
     else:
+        await bot.send_message(message.from_user.id, "Ответ")
         await message.answer(message.text)
+        await message.reply(message.text)
 
 
 async def main():
+    # Удалить все update, пока не в сети
+    await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
 
