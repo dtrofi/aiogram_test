@@ -1,4 +1,5 @@
 ﻿#python stuff
+.venv
 venv/
 .pylintrc
 __pycashe__/
