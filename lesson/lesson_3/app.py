@@ -1,18 +1,6 @@
-#!/usr/bin/env python
-
-# Установка
-
-# pip install aiogram
-# или pip install aiogram==3.3.0
-# pip install python-dotenv
-
-# Документация
-# https://docs.aiogram.dev/en/latest/
-# https://core.telegram.org/
-# https://core.telegram.org/api
-
 import asyncio
 import os
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import CommandStart
 
@@ -22,16 +10,16 @@ load_dotenv(find_dotenv())
 
 from handlers.user_private import user_private_router
 
+
 ALLOWED_UPDATES = ["message, edited_message"]
 
 bot = Bot(token=os.getenv("TOKEN"))
-
 dp = Dispatcher()
+
 dp.include_router(user_private_router)
 
 
 async def main():
-    # Удалить все update, пока не в сети
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, allowed_updates=ALLOWED_UPDATES)
 
